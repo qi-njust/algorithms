@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <string.h>
+
+/**
+	参数s：字符串
+	参数length：字符串长度
+	将字符串s向左移一位字符
+  */
+
+
+void leftOneChar(char s[], int length) {
+	
+	char c = s[0];
+
+	for (int i = 1; i < length; i++) {
+		s[i-1] = s[i];
+	}
+
+	s[length-1] = c;
+}
+
+void moveChar(char s[], int length, int m) {
+	
+	m = m % length;
+
+	while(m--) {
+		leftOneChar(s,length);
+	}
+}
+
+/*
+void reverse(char s[], int from, int to) {
+
+	char c;
+
+	while(from < to) {
+		c = s[from];
+		s[from++] = s[to];
+		s[to--] = c;
+	}
+}
+
+void moveChar(char s[], int length, int m) {
+	
+	m = m % length;
+
+	reverse(s, 0, m-1);
+	reverse(s, m, length-1);
+	reverse(s, 0, length-1);
+}
+*/
+
+void main() {
+
+	char s[] = "abcdef";
+	//printf("%s\n\n",s);
+	moveChar(s,strlen(s),2);
+	printf("%s\n",s);
+
+}
